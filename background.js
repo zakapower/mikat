@@ -86,7 +86,7 @@ export async function refreshAll() {
 
   if (!settings.coords) {
     await resetIcon()
-    await chrome.action.setTitle({ title: 'Микат — укажите локацию' })
+    await chrome.action.setTitle({ title: 'Mikat — укажите локацию' })
     await clearNotifyAlarms()
     return
   }
@@ -156,7 +156,7 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
     chrome.notifications.create(`pre-${id}-${Date.now()}`, {
       type: 'basic',
       iconUrl: 'icons/icon128.png',
-      title: 'Микат',
+      title: 'Mikat',
       message: `Скоро ${PRAYER_LABELS_RU[id]} (через ${settings.notifyBeforeMinutes} мин)`,
     })
   }
@@ -165,7 +165,7 @@ chrome.alarms.onAlarm.addListener(async (alarm) => {
     chrome.notifications.create(`salah-${id}-${Date.now()}`, {
       type: 'basic',
       iconUrl: 'icons/icon128.png',
-      title: 'Микат',
+      title: 'Mikat',
       message: `Время намаза: ${PRAYER_LABELS_RU[id]}`,
     })
   }

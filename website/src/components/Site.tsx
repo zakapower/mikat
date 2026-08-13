@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import { CHROME_STORE_URL, GITHUB_PROFILE, GITHUB_URL } from '@/lib/site'
 
 type Lang = 'ru' | 'en'
@@ -9,8 +8,9 @@ type Theme = 'light' | 'dark'
 
 const copy = {
   ru: {
+    brand: 'Mikat',
     navFeatures: 'Возможности',
-    navPrivacy: 'Privacy',
+    navPrivacy: 'Конфиденциальность',
     headline: 'Времена намаза всегда под рукой',
     lead: 'Таймер на иконке, уведомления и расчёт по вашей локации — расширение для Chrome и Edge.',
     install: 'Установить в Chrome',
@@ -19,17 +19,20 @@ const copy = {
     featuresTitle: 'Возможности',
     featuresLead: 'Локальный расчёт (adhan). Настройки хранятся в браузере — без своего сервера.',
     features: [
-      ['Таймер на иконке', 'Countdown HH:MM до следующего намаза на badge.'],
+      ['Таймер', 'Countdown HH:MM до следующего намаза на иконке.'],
       ['Уведомления', 'Напоминание за 5, 10 или 15 минут — можно выключить.'],
       ['Локация', 'Геолокация или поиск города через OpenStreetMap.'],
-      ['Гибкий расчёт', 'Методы (в т.ч. Muslim World League) и мазхаб для Аср.'],
-      ['RU / EN', 'Интерфейс на русском и английском.'],
-      ['Темы', 'Светлая и тёмная.'],
+      ['Расчёт', 'Методы (в т.ч. Muslim World League) и мазхаб для Аср.'],
+      ['Языки', 'Интерфейс на русском и английском (RU / EN).'],
+      ['Темы', 'Светлая и тёмная тема.'],
     ] as const,
     privacyTitle: 'Политика конфиденциальности',
     updated: 'Дата обновления: 13 августа 2026',
+    themeToDark: 'Включить тёмную тему',
+    themeToLight: 'Включить светлую тему',
   },
   en: {
+    brand: 'Mikat',
     navFeatures: 'Features',
     navPrivacy: 'Privacy',
     headline: 'Prayer times always at hand',
@@ -40,15 +43,17 @@ const copy = {
     featuresTitle: 'Features',
     featuresLead: 'Local calculation (adhan). Settings stay in your browser — no backend.',
     features: [
-      ['Icon timer', 'HH:MM countdown to the next prayer on the badge.'],
+      ['Countdown', 'HH:MM timer to the next prayer on the toolbar icon.'],
       ['Notifications', 'Remind 5, 10, or 15 minutes ahead — can be disabled.'],
       ['Location', 'Geolocation or city search via OpenStreetMap.'],
-      ['Flexible math', 'Methods (incl. Muslim World League) and Asr madhab.'],
-      ['RU / EN', 'Russian and English UI.'],
-      ['Themes', 'Light and dark.'],
+      ['Calculation', 'Methods (incl. Muslim World League) and Asr madhab.'],
+      ['Languages', 'Russian and English UI (RU / EN).'],
+      ['Themes', 'Light and dark theme.'],
     ] as const,
     privacyTitle: 'Privacy Policy',
     updated: 'Last updated: August 13, 2026',
+    themeToDark: 'Enable dark theme',
+    themeToLight: 'Enable light theme',
   },
 }
 
@@ -73,11 +78,18 @@ export function Site() {
   useEffect(() => {
     document.documentElement.dataset.theme = theme
     localStorage.setItem('mikat-theme', theme)
+    const icon = document.getElementById('site-favicon') as HTMLLinkElement | null
+    if (icon) {
+      icon.href =
+        theme === 'dark' ? '/favicon-dark.svg?v=1' : '/favicon-light.svg?v=1'
+    }
   }, [theme])
 
   useEffect(() => {
     document.documentElement.lang = lang
     localStorage.setItem('mikat-lang', lang)
+    document.title =
+      lang === 'en' ? 'Mikat — prayer times in the browser' : 'Mikat — времена намаза в браузере'
   }, [lang])
 
   function toggleTheme() {
@@ -93,8 +105,12 @@ export function Site() {
       <header className="site-header">
         <div className="site-header__inner">
           <a className="brand" href="#top">
-            <Image className="brand__mark" src="/icon.png" alt="" width={22} height={22} />
-            <span className="brand__name">Микат</span>
+            <svg className="brand__mark" viewBox="0 0 24 24" aria-hidden>
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              <path d="M20 3v4" />
+              <path d="M22 5h-4" />
+            </svg>
+            <span className="brand__name">{t.brand}</span>
           </a>
           <nav className="site-nav" aria-label="Section">
             <a href="#features">{t.navFeatures}</a>
@@ -127,7 +143,7 @@ export function Site() {
               type="button"
               className={`ctrl${themeReady ? '' : ' ctrl--theme-boot'}`}
               onClick={toggleTheme}
-              aria-label={theme === 'light' ? 'Тёмная тема' : 'Светлая тема'}
+              aria-label={theme === 'light' ? t.themeToDark : t.themeToLight}
             >
               <span className="ctrl__icon-swap" aria-hidden>
                 <span className={`ctrl__label${theme === 'light' ? ' is-active' : ''}`}>
@@ -151,7 +167,7 @@ export function Site() {
         <section className="hero" id="top">
           <div className="hero__bg" aria-hidden />
           <div className="hero__inner">
-            <p className="hero__brand">Микат</p>
+            <p className="hero__brand">{t.brand}</p>
             <h1>{t.headline}</h1>
             <p className="hero__lead">{t.lead}</p>
             <div className="hero__actions">
@@ -189,7 +205,7 @@ export function Site() {
             {lang === 'ru' ? (
               <>
                 <p>
-                  Расширение браузера <strong>Микат</strong> показывает времена намаза, таймер на
+                  Расширение браузера <strong>Mikat</strong> показывает времена намаза, таймер на
                   иконке и опциональные уведомления.
                 </p>
                 <h3>1. Разработчик</h3>
@@ -214,9 +230,7 @@ export function Site() {
                     <strong>Кэш дня</strong> — локальный список времён для попапа и badge.
                   </li>
                 </ul>
-                <p>
-                  Не собираем историю браузера, содержимое сайтов, email, аккаунты и платежи.
-                </p>
+                <p>Не собираем историю браузера, содержимое сайтов, email, аккаунты и платежи.</p>
                 <h3>3. Где хранятся данные</h3>
                 <p>
                   В <code>chrome.storage</code> вашего браузера. Отдельного бэкенда нет — данные не
@@ -238,8 +252,8 @@ export function Site() {
                 <p>Удалите расширение или очистите его данные в настройках браузера.</p>
                 <h3>8. Контакты</h3>
                 <p>
-                  <a href={`${GITHUB_URL}/issues`} target="_blank" rel="noopener noreferrer">
-                    Issues на GitHub
+                  <a href={GITHUB_PROFILE} target="_blank" rel="noopener noreferrer">
+                    github.com/zakapower
                   </a>
                 </p>
               </>
@@ -295,8 +309,8 @@ export function Site() {
                 <p>Remove the extension or clear its storage in browser settings.</p>
                 <h3>8. Contact</h3>
                 <p>
-                  <a href={`${GITHUB_URL}/issues`} target="_blank" rel="noopener noreferrer">
-                    GitHub issues
+                  <a href={GITHUB_PROFILE} target="_blank" rel="noopener noreferrer">
+                    github.com/zakapower
                   </a>
                 </p>
               </>
@@ -306,7 +320,7 @@ export function Site() {
       </main>
 
       <footer className="site-footer">
-        <span className="site-footer__brand">Микат</span>
+        <span className="site-footer__brand">{t.brand}</span>
         <span className="site-footer__dot">·</span>
         <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
           GitHub

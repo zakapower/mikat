@@ -85,12 +85,14 @@ main {
 }
 
 .site-header__inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  padding: 0.85rem 1.25rem;
-  display: flex;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0.85rem clamp(1.25rem, 3vw, 2rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  gap: 1rem;
+  column-gap: 1.25rem;
 }
 
 .brand {
@@ -100,13 +102,19 @@ main {
   color: var(--ink);
   flex-shrink: 0;
   line-height: 1;
+  justify-self: start;
 }
 
 .brand__mark {
-  width: 1.35rem;
-  height: 1.35rem;
-  border-radius: 0.35rem;
+  width: 1.2rem;
+  height: 1.2rem;
   display: block;
+  flex-shrink: 0;
+  stroke: var(--accent);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
 }
 
 .brand__name {
@@ -114,14 +122,18 @@ main {
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.03em;
+  line-height: 1;
 }
 
 .site-nav {
-  display: none;
-  gap: 1rem;
-  margin-left: 0.5rem;
+  display: flex;
+  gap: 1.15rem;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  margin: 0;
   font-size: 0.92rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--muted);
 }
 
@@ -133,7 +145,8 @@ main {
   display: flex;
   gap: 0.35rem;
   align-items: center;
-  margin-left: auto;
+  justify-self: end;
+  margin-left: 0;
 }
 
 .ctrl {
@@ -206,6 +219,7 @@ main {
   border-bottom: 1px solid var(--line);
   overflow: hidden;
   text-align: center;
+  scroll-margin-top: 4.5rem;
   animation: in 0.45s ease both;
 }
 
@@ -317,6 +331,7 @@ main {
   max-width: var(--max);
   margin: 0 auto;
   padding: 2.5rem 1.25rem 3rem;
+  scroll-margin-top: 4.5rem;
   animation: in 0.45s ease both;
 }
 
@@ -340,18 +355,25 @@ main {
 .feature-list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.35rem 0.15rem;
   display: grid;
   gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 0.65rem;
+  background: var(--surface);
 }
 
 .feature-list li {
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   border-top: 1px solid var(--line);
 }
 
+.feature-list li:first-child {
+  border-top: none;
+}
+
 .feature-list li:last-child {
-  border-bottom: 1px solid var(--line);
+  border-bottom: none;
 }
 
 .feature-list h3 {
@@ -453,9 +475,13 @@ main {
   }
 }
 
-@media (min-width: 640px) {
+@media (max-width: 639px) {
   .site-nav {
-    display: flex;
+    display: none;
+  }
+
+  .site-header__inner {
+    grid-template-columns: 1fr auto;
   }
 }
 

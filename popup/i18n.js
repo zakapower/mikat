@@ -3,7 +3,7 @@ export const GITHUB_URL = 'https://github.com/zakapower'
 /** @typedef {'ru' | 'en'} Lang */
 
 export const STRINGS = {
-  brand: { ru: 'Микат', en: 'Mikat' },
+  brand: { ru: 'Mikat', en: 'Mikat' },
   github: { ru: 'GitHub', en: 'GitHub' },
   switchToEn: { ru: 'Switch to English', en: 'Switch to English' },
   switchToRu: { ru: 'Переключить на русский', en: 'Переключить на русский' },

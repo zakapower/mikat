@@ -1,10 +1,10 @@
 {
   "manifest_version": 3,
-  "name": "Микат",
+  "name": "Mikat",
   "description": "Времена намаза, countdown на иконке и уведомления",
   "version": "1.0.1",
   "action": {
-    "default_title": "Микат",
+    "default_title": "Mikat",
     "default_popup": "popup/popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
