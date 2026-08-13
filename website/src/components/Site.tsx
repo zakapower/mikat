@@ -252,9 +252,7 @@ export function Site() {
                 <p>Удалите расширение или очистите его данные в настройках браузера.</p>
                 <h3>8. Контакты</h3>
                 <p>
-                  <a href={GITHUB_PROFILE} target="_blank" rel="noopener noreferrer">
-                    github.com/zakapower
-                  </a>
+                  <a href="mailto:zakaman2000@gmail.com">zakaman2000@gmail.com</a>
                 </p>
               </>
             ) : (
@@ -309,9 +307,7 @@ export function Site() {
                 <p>Remove the extension or clear its storage in browser settings.</p>
                 <h3>8. Contact</h3>
                 <p>
-                  <a href={GITHUB_PROFILE} target="_blank" rel="noopener noreferrer">
-                    github.com/zakapower
-                  </a>
+                  <a href="mailto:zakaman2000@gmail.com">zakaman2000@gmail.com</a>
                 </p>
               </>
             )}
