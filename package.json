@@ -1,0 +1,12 @@
+{
+  "name": "mikat",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/badge.test.js tests/prayer.test.js tests/storage.test.js"
+  },
+  "devDependencies": {
+    "adhan": "^4.4.3"
+  }
+}

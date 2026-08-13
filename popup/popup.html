@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Микат</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="app" id="app" data-view="main">
+      <section class="view view--main" id="view-main">
+        <header class="header">
+          <h1 class="brand">Микат</h1>
+          <div class="header__actions">
+            <a
+              class="icon-btn"
+              id="github-link"
+              href="https://github.com/zakapower"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            ></a>
+            <button
+              type="button"
+              class="icon-btn"
+              id="lang-toggle"
+              aria-label="Switch language"
+            >
+              <span class="icon-swap icon-swap--lang" aria-hidden="true">
+                <span class="ctrl__label" data-lang-face="en">EN</span>
+                <span class="ctrl__label" data-lang-face="ru">RU</span>
+              </span>
+            </button>
+            <button
+              type="button"
+              class="icon-btn icon-btn--theme-boot"
+              id="theme-toggle"
+              aria-label="Сменить тему"
+            ></button>
+            <button type="button" class="icon-btn" id="open-settings" aria-label="Настройки"></button>
+          </div>
+        </header>
+
+        <section class="next" id="next-block" hidden>
+          <p class="next__label" id="next-label">Следующий намаз</p>
+          <p class="next__name" id="next-name">—</p>
+          <p class="next__time" id="next-time">—</p>
+          <p class="next__countdown" id="next-countdown">
+            <span class="next__countdown-icon" id="next-countdown-icon" aria-hidden="true"></span>
+            <span id="next-countdown-text">—</span>
+          </p>
+        </section>
+
+        <section class="onboarding" id="onboarding">
+          <p class="lead" id="onboarding-lead">Определяю местоположение…</p>
+        </section>
+
+        <ul class="prayer-list" id="prayer-list" hidden></ul>
+
+        <footer class="place-bar" id="place-bar">
+          <p class="place-bar__label">
+            <span class="place-bar__icon" id="place-icon" aria-hidden="true"></span>
+            <span id="place-label">Локация не задана</span>
+          </p>
+          <button type="button" class="icon-btn" id="geo-btn-main" aria-label="Обновить местоположение"></button>
+        </footer>
+      </section>
+
+      <section class="view view--settings" id="view-settings" hidden>
+        <header class="header header--settings">
+          <button type="button" class="icon-btn" id="back-main" aria-label="Назад"></button>
+          <h2 class="settings-title" id="settings-title">Настройки</h2>
+        </header>
+
+        <div class="settings-stack">
+          <section class="settings-block settings-block--loc">
+            <h3 class="settings-block__title">
+              <span class="settings-block__icon" id="loc-block-icon" aria-hidden="true"></span>
+              <span id="loc-block-title">Локация</span>
+            </h3>
+            <p class="location__label" id="settings-place-label">Локация не задана</p>
+            <button type="button" class="btn btn--block" id="geo-btn">
+              <span class="btn__icon" id="geo-btn-icon" aria-hidden="true"></span>
+              <span id="geo-btn-text">Моё местоположение</span>
+            </button>
+            <div class="search">
+              <label class="field field--search" for="city-search">
+                <span class="field__label visually-hidden" id="search-city-label">Поиск города</span>
+                <span class="search__icon" id="search-icon" aria-hidden="true"></span>
+                <input
+                  type="search"
+                  id="city-search"
+                  placeholder="Поиск города…"
+                  autocomplete="off"
+                />
+              </label>
+              <ul class="search-results" id="search-results" hidden></ul>
+            </div>
+          </section>
+
+          <section class="settings-block">
+            <h3 class="settings-block__title" id="calc-title">Расчёт</h3>
+            <div class="field">
+              <span id="method-label">Метод расчёта</span>
+              <div class="menu" data-menu="method">
+                <button
+                  type="button"
+                  class="menu__trigger"
+                  id="method-trigger"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="menu__value" id="method-value">—</span>
+                  <span class="menu__chevron" aria-hidden="true"></span>
+                </button>
+                <ul class="menu__list" id="method-list" role="listbox" hidden></ul>
+              </div>
+            </div>
+            <div class="field">
+              <span id="asr-label">Аср (мазхаб)</span>
+              <div class="menu" data-menu="asr">
+                <button
+                  type="button"
+                  class="menu__trigger"
+                  id="asr-trigger"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="menu__value" id="asr-value">—</span>
+                  <span class="menu__chevron" aria-hidden="true"></span>
+                </button>
+                <ul class="menu__list" id="asr-list" role="listbox" hidden></ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="settings-block">
+            <h3 class="settings-block__title">
+              <span class="settings-block__icon" id="bell-icon" aria-hidden="true"></span>
+              <span id="notify-block-title">Уведомления</span>
+            </h3>
+            <label class="switch">
+              <input type="checkbox" id="notifications" />
+              <span class="switch__track" aria-hidden="true"></span>
+              <span class="switch__label" id="notify-enable-label">Включить</span>
+            </label>
+            <div class="field">
+              <span id="remind-label">Напомнить за</span>
+              <div class="menu menu--up" data-menu="notify-before">
+                <button
+                  type="button"
+                  class="menu__trigger"
+                  id="notify-before-trigger"
+                  aria-haspopup="listbox"
+                  aria-expanded="false"
+                >
+                  <span class="menu__value" id="notify-before-value">—</span>
+                  <span class="menu__chevron" aria-hidden="true"></span>
+                </button>
+                <ul class="menu__list" id="notify-before-list" role="listbox" hidden></ul>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <p class="status" id="status" role="status"></p>
+    </div>
+    <script type="module" src="popup.js?v=2"></script>
+  </body>
+</html>
