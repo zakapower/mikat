@@ -59,7 +59,9 @@ Open Mikat, allow location or pick a city in settings, and prayer times stay one
 ## Privacy policy URL
 
 Лендинг: https://mikat-wine.vercel.app  
-Privacy Policy (для Chrome Web Store): https://mikat-wine.vercel.app/privacy
+Privacy Policy (якорь на той же странице): https://mikat-wine.vercel.app/#privacy  
+
+`/privacy` редиректит на `/#privacy`.
 
 Ссылка на расширение: пока «Скоро в Chrome Web Store»
 (`website/src/lib/site.ts` → `CHROME_STORE_URL`).
