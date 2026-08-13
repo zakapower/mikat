@@ -3,7 +3,7 @@
 ## Краткое описание (до 132 символов)
 
 **RU:**
-Времена намаза по вашей локации: countdown на иконке, уведомления и выбор метода расчёта.
+Времена намаза по вашей локации: таймер на иконке, уведомления и выбор метода расчёта.
 
 **EN:**
 Prayer times for your location: toolbar countdown, notifications, and calculation method choice.
@@ -16,7 +16,7 @@ Prayer times for your location: toolbar countdown, notifications, and calculatio
 
 Что умеет
 • Показывает следующий намаз и полный список на сегодня
-• Countdown на иконке расширения (HH:MM)
+• Таймер на иконке расширения (HH:MM)
 • Уведомления с напоминанием за 5, 10 или 15 минут
 • Геолокация или поиск города
 • Методы расчёта (включая Muslim World League) и мазхаб для Аср
