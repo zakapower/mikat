@@ -10,7 +10,7 @@ export const STRINGS = {
   themeToDark: { ru: 'Включить тёмную тему', en: 'Enable dark theme' },
   themeToLight: { ru: 'Включить светлую тему', en: 'Enable light theme' },
   settings: { ru: 'Настройки', en: 'Settings' },
-  back: { ru: 'Назад', en: 'Back' },
+  back: { ru: 'Закрыть', en: 'Close' },
   nextPrayer: { ru: 'Следующий намаз', en: 'Next prayer' },
   now: { ru: 'Сейчас', en: 'Now' },
   through: { ru: 'через', en: 'in' },

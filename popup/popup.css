@@ -82,6 +82,9 @@ body {
   gap: 0.55rem;
   flex: 0 0 auto;
   overflow: visible;
+}
+
+.view.is-entering {
   animation: in 0.45s ease both;
 }
 
@@ -103,19 +106,16 @@ body {
 
 .header--settings {
   position: relative;
-  justify-content: center;
+  justify-content: flex-end;
   min-height: 2.35rem;
 }
 
-.header--settings #back-main {
+.header--settings .settings-title {
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
-}
-
-.header--settings #back-main:active {
-  transform: translateY(-50%) scale(0.96);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .header__actions {
@@ -317,25 +317,28 @@ a.icon-btn {
   align-items: baseline;
   padding: 0.4rem 0.45rem;
   border-radius: 0.4rem;
+}
+
+.view.is-entering .prayer-list li {
   animation: filter-in 0.32s ease both;
 }
 
-.prayer-list li:nth-child(1) {
+.view.is-entering .prayer-list li:nth-child(1) {
   animation-delay: 0ms;
 }
-.prayer-list li:nth-child(2) {
+.view.is-entering .prayer-list li:nth-child(2) {
   animation-delay: 30ms;
 }
-.prayer-list li:nth-child(3) {
+.view.is-entering .prayer-list li:nth-child(3) {
   animation-delay: 60ms;
 }
-.prayer-list li:nth-child(4) {
+.view.is-entering .prayer-list li:nth-child(4) {
   animation-delay: 90ms;
 }
-.prayer-list li:nth-child(5) {
+.view.is-entering .prayer-list li:nth-child(5) {
   animation-delay: 120ms;
 }
-.prayer-list li:nth-child(6) {
+.view.is-entering .prayer-list li:nth-child(6) {
   animation-delay: 150ms;
 }
 
@@ -401,7 +404,6 @@ a.icon-btn {
   overflow: visible;
   margin-top: 0.65rem;
   padding-bottom: 0;
-  animation: in 0.45s ease both;
 }
 
 .settings-block {
@@ -886,8 +888,8 @@ a.icon-btn {
 
 @media (prefers-reduced-motion: reduce) {
   .view,
-  .settings-stack,
-  .prayer-list li,
+  .view.is-entering,
+  .view.is-entering .prayer-list li,
   .search-results,
   .menu__list,
   .status:not(:empty) {
@@ -909,8 +911,6 @@ a.icon-btn {
 
   .icon-btn:hover,
   .icon-btn:active,
-  .header--settings #back-main:hover,
-  .header--settings #back-main:active,
   .btn:hover {
     transform: none;
     box-shadow: none;

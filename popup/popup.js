@@ -93,17 +93,28 @@ let openMenuEl = null
 let lastDay = null
 let lastNextId = null
 let locating = false
+let uiReady = false
 
 function setStatus(text, isError = false) {
   els.status.textContent = text || ''
   els.status.classList.toggle('is-error', Boolean(isError && text))
 }
 
-function setView(view) {
+function setView(view, { animate = uiReady } = {}) {
   const isSettings = view === 'settings'
+  const show = isSettings ? els.viewSettings : els.viewMain
+  const hide = isSettings ? els.viewMain : els.viewSettings
+
   els.app.dataset.view = isSettings ? 'settings' : 'main'
-  els.viewMain.hidden = isSettings
-  els.viewSettings.hidden = !isSettings
+  hide.hidden = true
+  hide.classList.remove('is-entering')
+
+  show.classList.remove('is-entering')
+  show.hidden = false
+  if (animate) {
+    void show.offsetWidth
+    show.classList.add('is-entering')
+  }
 }
 
 function setGeoLoading(loading) {
@@ -185,7 +196,7 @@ function mountStaticIcons() {
   mountThemeToggle()
   els.githubLink.innerHTML = iconHtml('github')
   els.openSettings.innerHTML = iconHtml('settings')
-  els.backMain.innerHTML = iconHtml('arrowLeft')
+  els.backMain.innerHTML = iconHtml('x')
   els.nextCountdownIcon.innerHTML = iconHtml('clock')
   els.placeIcon.innerHTML = iconHtml('mapPin')
   els.geoBtnMain.innerHTML = iconHtml('locate')
@@ -579,6 +590,7 @@ async function boot() {
     }
   }
 
+  uiReady = true
   await notifySw()
 }
 
