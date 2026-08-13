@@ -1,3 +1,6 @@
 node_modules/
 .DS_Store
 *.log
+website/.next/
+website/node_modules/
+website/.vercel/
