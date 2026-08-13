@@ -57,9 +57,46 @@
           </p>
         </section>
 
-        <section class="onboarding" id="onboarding">
-          <p class="lead" id="onboarding-lead">Определяю местоположение…</p>
+        <section class="next next--skel" id="locating-skel-next" hidden aria-hidden="true">
+          <p class="next__label"><span class="skel__bone skel__bone--label"></span></p>
+          <p class="next__name"><span class="skel__bone skel__bone--name"></span></p>
+          <p class="next__time"><span class="skel__bone skel__bone--time"></span></p>
+          <p class="next__countdown">
+            <span class="next__countdown-icon skel__icon-slot" aria-hidden="true"></span>
+            <span class="skel__bone skel__bone--countdown"></span>
+          </p>
         </section>
+
+        <section class="onboarding" id="onboarding" hidden>
+          <p class="lead" id="onboarding-lead">Укажите город или разрешите геолокацию</p>
+        </section>
+
+        <ul class="prayer-list prayer-list--skel" id="locating-skel-list" hidden aria-hidden="true">
+          <li>
+            <strong><span class="skel__bone skel__bone--row-name"></span></strong>
+            <span><span class="skel__bone skel__bone--row-time"></span></span>
+          </li>
+          <li>
+            <strong><span class="skel__bone skel__bone--row-name skel__bone--row-name-sm"></span></strong>
+            <span><span class="skel__bone skel__bone--row-time"></span></span>
+          </li>
+          <li>
+            <strong><span class="skel__bone skel__bone--row-name"></span></strong>
+            <span><span class="skel__bone skel__bone--row-time"></span></span>
+          </li>
+          <li>
+            <strong><span class="skel__bone skel__bone--row-name skel__bone--row-name-md"></span></strong>
+            <span><span class="skel__bone skel__bone--row-time"></span></span>
+          </li>
+          <li>
+            <strong><span class="skel__bone skel__bone--row-name skel__bone--row-name-sm"></span></strong>
+            <span><span class="skel__bone skel__bone--row-time"></span></span>
+          </li>
+          <li>
+            <strong><span class="skel__bone skel__bone--row-name"></span></strong>
+            <span><span class="skel__bone skel__bone--row-time"></span></span>
+          </li>
+        </ul>
 
         <ul class="prayer-list" id="prayer-list" hidden></ul>
 
@@ -174,6 +211,6 @@
 
       <p class="status" id="status" role="status"></p>
     </div>
-    <script type="module" src="popup.js?v=2"></script>
+    <script type="module" src="popup.js?v=6"></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 import { getSettings, setSettings, getDayCache } from '../lib/storage.js'
-import { getCurrentCoords, searchCities } from '../lib/geo.js'
+import { getCurrentCoords, searchCities, reversePlaceLabel } from '../lib/geo.js'
 import { computeDayTimes, getNextPrayer } from '../lib/prayer.js'
 import { METHOD_OPTIONS } from '../lib/methods.js'
 import { formatBadgeTitle } from '../lib/badge.js'
@@ -26,6 +26,8 @@ const els = {
   nextCountdownText: $('next-countdown-text'),
   onboarding: $('onboarding'),
   onboardingLead: $('onboarding-lead'),
+  locatingSkelNext: $('locating-skel-next'),
+  locatingSkelList: $('locating-skel-list'),
   prayerList: $('prayer-list'),
   placeIcon: $('place-icon'),
   placeLabel: $('place-label'),
@@ -124,6 +126,34 @@ function setGeoLoading(loading) {
   els.geoBtnMain.disabled = loading
 }
 
+/** Ghost skeleton while first-run geolocation (neighbor-style). */
+function setLocatingSkeleton(active) {
+  locating = active
+  els.viewMain.setAttribute('aria-busy', active ? 'true' : 'false')
+  els.locatingSkelNext.hidden = !active
+  els.locatingSkelList.hidden = !active
+  els.locatingSkelNext.setAttribute('aria-hidden', active ? 'false' : 'true')
+  els.locatingSkelList.setAttribute('aria-hidden', active ? 'false' : 'true')
+
+  if (!active) return
+
+  els.onboarding.hidden = true
+  els.onboardingLead.hidden = true
+  els.onboardingLead.textContent = t(lang(), 'locating')
+  els.nextBlock.hidden = true
+  els.prayerList.hidden = true
+  setStatus('')
+}
+
+function showNeedLocation() {
+  setLocatingSkeleton(false)
+  els.onboarding.hidden = false
+  els.onboardingLead.hidden = false
+  els.onboardingLead.textContent = t(lang(), 'needLocation')
+  els.nextBlock.hidden = true
+  els.prayerList.hidden = true
+}
+
 function applyTheme(theme) {
   const isLight = theme === 'light'
   document.documentElement.dataset.theme = isLight ? 'light' : 'dark'
@@ -168,8 +198,10 @@ function applyLang() {
   els.remindLabel.textContent = t(L, 'remindBefore')
   applyTheme(settings.theme)
   if (locating) {
+    els.onboardingLead.hidden = true
     els.onboardingLead.textContent = t(L, 'locating')
   } else if (!settings.coords) {
+    els.onboardingLead.hidden = false
     els.onboardingLead.textContent = t(L, 'needLocation')
   }
   if (!settings.coords) {
@@ -289,6 +321,8 @@ function renderList(day, nextId) {
   lastDay = day
   lastNextId = nextId
   const L = lang()
+  els.locatingSkelNext.hidden = true
+  els.locatingSkelList.hidden = true
   els.prayerList.innerHTML = day.list
     .map(
       (item) => `
@@ -306,6 +340,8 @@ function renderNext(next) {
   nextPrayerId = next.id
   els.nextBlock.hidden = false
   els.onboarding.hidden = true
+  els.locatingSkelNext.hidden = true
+  els.locatingSkelList.hidden = true
   els.nextName.textContent = prayerLabel(lang(), next.id)
   els.nextTime.textContent = formatClock(nextAt)
   tickCountdown()
@@ -346,7 +382,7 @@ function recomputeLocal() {
   if (!settings?.coords) {
     els.nextBlock.hidden = true
     els.prayerList.hidden = true
-    els.onboarding.hidden = false
+    if (!locating) showNeedLocation()
     setPlaceLabels(t(lang(), 'locationUnset'))
     return null
   }
@@ -420,19 +456,26 @@ async function useCoords(coords, placeLabel) {
 
 async function requestGeo() {
   setGeoLoading(true)
-  locating = true
-  setStatus(t(lang(), 'locating'))
-  els.onboardingLead.textContent = t(lang(), 'locating')
+  const firstRun = !settings?.coords
+  if (firstRun) {
+    setLocatingSkeleton(true)
+  } else {
+    locating = true
+    setStatus('')
+  }
   try {
     const coords = await getCurrentCoords()
     let label = ''
     try {
-      const hits = await searchCities(`${coords.latitude},${coords.longitude}`)
-      label = hits[0]?.label || ''
+      label = await reversePlaceLabel(coords.latitude, coords.longitude, lang())
     } catch {
       /* reverse optional */
     }
     locating = false
+    els.locatingSkelNext.hidden = true
+    els.locatingSkelList.hidden = true
+    els.viewMain.setAttribute('aria-busy', 'false')
+    els.onboarding.hidden = true
     await useCoords(coords, label)
     return true
   } catch (err) {
@@ -440,7 +483,13 @@ async function requestGeo() {
     const msg =
       err.code === 'GEO_DENIED' ? t(lang(), 'geoDenied') : t(lang(), 'geoFailed')
     setStatus(msg, true)
-    els.onboardingLead.textContent = t(lang(), 'needLocation')
+    if (firstRun) {
+      showNeedLocation()
+    } else {
+      els.locatingSkelNext.hidden = true
+      els.locatingSkelList.hidden = true
+      els.viewMain.setAttribute('aria-busy', 'false')
+    }
     return false
   } finally {
     setGeoLoading(false)
@@ -453,7 +502,19 @@ els.themeToggle.addEventListener('click', async () => {
 })
 
 els.langToggle.addEventListener('click', async () => {
-  await persist({ lang: lang() === 'ru' ? 'en' : 'ru' })
+  const nextLang = lang() === 'ru' ? 'en' : 'ru'
+  await persist({ lang: nextLang })
+  if (!settings?.coords) return
+  try {
+    const label = await reversePlaceLabel(
+      settings.coords.latitude,
+      settings.coords.longitude,
+      nextLang,
+    )
+    if (label) await persist({ placeLabel: label })
+  } catch {
+    /* keep previous label */
+  }
 })
 
 els.openSettings.addEventListener('click', () => {
@@ -483,7 +544,7 @@ els.citySearch.addEventListener('input', () => {
       return
     }
     try {
-      const hits = await searchCities(q)
+      const hits = await searchCities(q, lang())
       if (!hits.length) {
         els.searchResults.hidden = true
         setStatus(t(lang(), 'nothingFound'), true)
@@ -575,17 +636,17 @@ async function boot() {
     }
   }
 
-  recomputeLocal()
+  if (settings.coords) {
+    recomputeLocal()
+  } else {
+    setLocatingSkeleton(true)
+  }
   startCountdown()
 
   if (!settings.coords) {
-    els.onboarding.hidden = false
-    locating = true
-    els.onboardingLead.textContent = t(lang(), 'locating')
     const ok = await requestGeo()
-    locating = false
     if (!ok) {
-      els.onboardingLead.textContent = t(lang(), 'needLocation')
+      showNeedLocation()
       setView('settings')
     }
   }

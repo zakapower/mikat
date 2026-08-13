@@ -20,24 +20,6 @@ const BADGE_ONLY_ICON = {
   128: 'icons/icon-empty128.png',
 }
 
-async function clearNotifyAlarms() {
-  const all = await chrome.alarms.getAll()
-  await Promise.all(
-    all
-      .filter(
-        (a) => a.name.startsWith('mikat-salah:') || a.name.startsWith('mikat-pre:'),
-      )
-      .map((a) => chrome.alarms.clear(a.name)),
-  )
-}
-
-async function ensureTickAlarm() {
-  const existing = await chrome.alarms.get('mikat-tick')
-  if (!existing) {
-    chrome.alarms.create('mikat-tick', { periodInMinutes: 1 })
-  }
-}
-
 async function applyBadge(next, placeLabel) {
   const msUntil = Math.max(0, next.at.getTime() - Date.now())
   const text = formatBadgeText(msUntil)
@@ -62,6 +44,24 @@ async function applyBadge(next, placeLabel) {
 async function resetIcon() {
   await chrome.action.setBadgeText({ text: '' })
   await chrome.action.setIcon({ path: DEFAULT_ICON })
+}
+
+async function clearNotifyAlarms() {
+  const all = await chrome.alarms.getAll()
+  await Promise.all(
+    all
+      .filter(
+        (a) => a.name.startsWith('mikat-salah:') || a.name.startsWith('mikat-pre:'),
+      )
+      .map((a) => chrome.alarms.clear(a.name)),
+  )
+}
+
+async function ensureTickAlarm() {
+  const existing = await chrome.alarms.get('mikat-tick')
+  if (!existing) {
+    chrome.alarms.create('mikat-tick', { periodInMinutes: 1 })
+  }
 }
 
 async function scheduleNotifications(settings, upcoming) {

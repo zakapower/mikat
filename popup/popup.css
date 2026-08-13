@@ -301,6 +301,82 @@ a.icon-btn {
   color: var(--muted);
 }
 
+/* кости внутри тех же .next / .prayer-list — без скачка высоты */
+.skel__bone {
+  display: inline-block;
+  vertical-align: baseline;
+  border-radius: 0.35rem;
+  background: linear-gradient(
+    105deg,
+    color-mix(in srgb, var(--wash) 88%, var(--line)) 0%,
+    color-mix(in srgb, var(--surface) 70%, var(--wash)) 42%,
+    color-mix(in srgb, var(--wash) 88%, var(--line)) 78%
+  );
+  background-size: 220% 100%;
+  animation: skel-shimmer 1.55s ease-in-out infinite;
+}
+
+.next--skel .skel__icon-slot {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  flex-shrink: 0;
+}
+
+.skel__bone--label {
+  width: 11em;
+  height: 0.7em;
+}
+
+.skel__bone--name {
+  width: 4.2em;
+  height: 0.7em;
+  border-radius: 0.4rem;
+}
+
+.skel__bone--time {
+  width: 3.4em;
+  height: 0.7em;
+}
+
+.skel__bone--countdown {
+  width: 6.5em;
+  height: 0.7em;
+}
+
+.skel__bone--row-name {
+  width: 4.5em;
+  height: 0.7em;
+}
+
+.skel__bone--row-name-sm {
+  width: 3.2em;
+}
+
+.skel__bone--row-name-md {
+  width: 5.2em;
+}
+
+.skel__bone--row-time {
+  width: 3em;
+  height: 0.7em;
+}
+
+@keyframes skel-shimmer {
+  0% {
+    background-position: 100% 0;
+    opacity: 0.72;
+  }
+  50% {
+    background-position: 0% 0;
+    opacity: 1;
+  }
+  100% {
+    background-position: 100% 0;
+    opacity: 0.72;
+  }
+}
+
 .prayer-list {
   list-style: none;
   margin: 0;
@@ -309,6 +385,12 @@ a.icon-btn {
   flex-direction: column;
   gap: 0.1rem;
   flex: 0 0 auto;
+}
+
+.prayer-list[hidden],
+.next[hidden],
+.onboarding[hidden] {
+  display: none !important;
 }
 
 .prayer-list li {
@@ -894,6 +976,12 @@ a.icon-btn {
   .menu__list,
   .status:not(:empty) {
     animation: none;
+  }
+
+  .skel__bone {
+    animation: none;
+    background: color-mix(in srgb, var(--wash) 75%, var(--line));
+    opacity: 0.85;
   }
 
   .icon-btn,
