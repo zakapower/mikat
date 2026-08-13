@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mikat marquee promo 1400×560</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../popup/popup.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1400px !important;
+        height: 560px !important;
+        max-height: none !important;
+        margin: 0;
+        overflow: hidden;
+        background: #120e1c;
+      }
+      .tile {
+        width: 1400px;
+        height: 560px;
+        position: relative;
+        display: grid;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+        gap: 40px;
+        padding: 56px 72px;
+        color: #eeeaf6;
+        font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+        background:
+          radial-gradient(60% 90% at 85% 50%, #3a2466 0%, transparent 58%),
+          radial-gradient(50% 70% at 10% 80%, #1c1430 0%, transparent 55%),
+          #120e1c;
+      }
+      .copy {
+        max-width: 620px;
+      }
+      .logo-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 22px;
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 16px;
+        background: #5b21b6;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+      .logo svg {
+        width: 36px;
+        height: 36px;
+      }
+      .brand {
+        font-family: Literata, Georgia, serif;
+        font-size: 64px;
+        font-weight: 700;
+        letter-spacing: -0.045em;
+        line-height: 1;
+      }
+      .headline {
+        margin: 0 0 14px;
+        font-family: Literata, Georgia, serif;
+        font-size: 40px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        color: #f5f0ff;
+      }
+      .lead {
+        margin: 0 0 28px;
+        font-size: 20px;
+        line-height: 1.45;
+        color: #b7adc9;
+        max-width: 520px;
+      }
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .chip {
+        font-size: 15px;
+        font-weight: 600;
+        color: #f5f0ff;
+        background: rgba(167, 139, 250, 0.18);
+        border: 1px solid rgba(167, 139, 250, 0.35);
+        border-radius: 999px;
+        padding: 9px 14px;
+      }
+      .preview-wrap {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .frame {
+        width: 340px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 1px rgba(167, 139, 250, 0.22),
+          0 24px 60px rgba(0, 0, 0, 0.45);
+        transform: scale(0.95);
+        transform-origin: center right;
+      }
+      .popup-root {
+        width: 340px;
+        font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+        font-size: 14px;
+        line-height: 1.4;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            80% 50% at 100% 0%,
+            color-mix(in srgb, var(--wash) 70%, transparent),
+            transparent 60%
+          ),
+          var(--bg);
+      }
+      .popup-root .app {
+        padding: 0.75rem 0.9rem 0.8rem;
+      }
+      .icon {
+        width: 1.05rem;
+        height: 1.05rem;
+        display: block;
+      }
+      .icon-btn {
+        width: 2.1rem;
+        height: 2.1rem;
+      }
+      .brand-popup {
+        font-size: 1.55rem;
+      }
+      .next__name {
+        font-size: 1.7rem;
+      }
+      .next__time {
+        font-size: 1.85rem;
+      }
+      .prayer-list li {
+        padding: 0.32rem 0.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tile">
+      <div class="copy">
+        <div class="logo-row">
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F5F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              <path d="M20 3v4" />
+              <path d="M22 5h-4" />
+            </svg>
+          </div>
+          <div class="brand">Микат</div>
+        </div>
+        <h1 class="headline">Времена намаза всегда под рукой</h1>
+        <p class="lead">
+          Таймер на иконке, уведомления и расчёт по вашей локации — в один клик из браузера.
+        </p>
+        <div class="chips">
+          <span class="chip">Геолокация / город</span>
+          <span class="chip">Методы расчёта</span>
+          <span class="chip">RU / EN</span>
+          <span class="chip">Светлая и тёмная тема</span>
+        </div>
+      </div>
+      <div class="preview-wrap">
+        <div class="frame">
+          <div class="popup-root" data-theme="dark">
+            <div class="app">
+              <section class="view view--main">
+                <header class="header">
+                  <h1 class="brand brand-popup">Микат</h1>
+                  <div class="header__actions">
+                    <span class="icon-btn" aria-hidden="true"><span style="font-size:0.68rem;font-weight:700">EN</span></span>
+                    <span class="icon-btn" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    </span>
+                    <span class="icon-btn" aria-hidden="true">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </span>
+                  </div>
+                </header>
+                <section class="next">
+                  <p class="next__label">Следующий намаз</p>
+                  <p class="next__name">Магриб</p>
+                  <p class="next__time">18:42</p>
+                  <p class="next__countdown">
+                    <span>через 1 ч 24 мин</span>
+                  </p>
+                </section>
+                <ul class="prayer-list">
+                  <li><strong>Фаджр</strong><span>04:18</span></li>
+                  <li><strong>Зухр</strong><span>12:14</span></li>
+                  <li><strong>Аср</strong><span>15:47</span></li>
+                  <li class="is-next"><strong>Магриб</strong><span>18:42</span></li>
+                  <li><strong>Иша</strong><span>20:12</span></li>
+                </ul>
+                <footer class="place-bar">
+                  <p class="place-bar__label"><span>Махачкала, Дагестан</span></p>
+                </footer>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mikat small promo 440×280</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500;600&family=Literata:opsz,wght@7..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        width: 440px;
+        height: 280px;
+        overflow: hidden;
+        background: #120e1c;
+      }
+      .tile {
+        width: 440px;
+        height: 280px;
+        position: relative;
+        background:
+          radial-gradient(90% 80% at 100% 0%, #3b2668 0%, transparent 55%),
+          radial-gradient(70% 60% at 0% 100%, #1f1633 0%, transparent 50%),
+          #120e1c;
+        color: #eeeaf6;
+        font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+        padding: 28px 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .top {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        flex-shrink: 0;
+        background: #5b21b6;
+        display: grid;
+        place-items: center;
+      }
+      .logo svg {
+        width: 32px;
+        height: 32px;
+      }
+      .brand {
+        font-family: Literata, Georgia, serif;
+        font-size: 42px;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+      .tag {
+        margin-top: 6px;
+        font-size: 15px;
+        font-weight: 500;
+        color: #b7adc9;
+        line-height: 1.25;
+      }
+      .bottom {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+      .chip {
+        font-size: 13px;
+        font-weight: 600;
+        color: #f5f0ff;
+        background: rgba(167, 139, 250, 0.18);
+        border: 1px solid rgba(167, 139, 250, 0.35);
+        border-radius: 999px;
+        padding: 7px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tile">
+      <div class="top">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F5F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+            <path d="M20 3v4" />
+            <path d="M22 5h-4" />
+          </svg>
+        </div>
+        <div>
+          <div class="brand">Микат</div>
+          <div class="tag">Времена намаза в браузере</div>
+        </div>
+      </div>
+      <div class="bottom">
+        <span class="chip">Таймер</span>
+        <span class="chip">Уведомления</span>
+        <span class="chip">RU / EN</span>
+      </div>
+    </div>
+  </body>
+</html>

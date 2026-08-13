@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="ru" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mikat shot — settings dark</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Literata:opsz,wght@7..72,600;7..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../popup/popup.css" />
+    <style>
+      html,
+      body {
+        width: 1280px !important;
+        height: 800px !important;
+        max-height: none !important;
+        margin: 0;
+        overflow: hidden;
+      }
+      body {
+        display: grid;
+        place-items: center;
+        background:
+          radial-gradient(70% 55% at 50% 20%, #2a1f45 0%, transparent 55%),
+          #0c0a12;
+      }
+      .frame {
+        width: 360px;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow:
+          0 0 0 1px rgba(167, 139, 250, 0.2),
+          0 28px 80px rgba(0, 0, 0, 0.55);
+      }
+      .popup-root {
+        font-family: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+        font-size: 15px;
+        line-height: 1.45;
+        color: var(--ink);
+        background:
+          radial-gradient(
+            80% 50% at 100% 0%,
+            color-mix(in srgb, var(--wash) 70%, transparent),
+            transparent 60%
+          ),
+          var(--bg);
+      }
+      .icon {
+        width: 1.15rem;
+        height: 1.15rem;
+        display: block;
+      }
+      .btn__icon .icon,
+      .settings-block__icon .icon,
+      .search__icon .icon,
+      .menu__chevron .icon {
+        width: 1rem;
+        height: 1rem;
+      }
+      .shot-brand {
+        position: absolute;
+        left: 64px;
+        top: 56px;
+        font-family: Literata, Georgia, serif;
+        font-size: 42px;
+        font-weight: 700;
+        color: #eeeaf6;
+        letter-spacing: -0.04em;
+      }
+      .shot-sub {
+        position: absolute;
+        left: 64px;
+        top: 112px;
+        color: #a39bb0;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 18px;
+        max-width: 360px;
+      }
+      .shot-caption {
+        position: absolute;
+        left: 64px;
+        bottom: 56px;
+        color: #cfc6e2;
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 22px;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shot-brand">Микат</div>
+    <div class="shot-sub">Локация · метод расчёта · уведомления</div>
+    <div class="frame">
+      <div class="popup-root">
+        <div class="app" data-view="settings">
+          <section class="view view--settings">
+            <header class="header header--settings">
+              <h2 class="settings-title">Настройки</h2>
+              <div class="header__actions">
+                <span class="icon-btn" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </span>
+              </div>
+            </header>
+            <div class="settings-stack">
+              <section class="settings-block settings-block--loc">
+                <h3 class="settings-block__title">
+                  <span class="settings-block__icon">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                  </span>
+                  <span>Локация</span>
+                </h3>
+                <p class="location__label">Махачкала, Дагестан</p>
+                <button type="button" class="btn btn--block" tabindex="-1">
+                  <span class="btn__icon">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="2" x2="5" y1="12" y2="12"/><line x1="19" x2="22" y1="12" y2="12"/><line x1="12" x2="12" y1="2" y2="5"/><line x1="12" x2="12" y1="19" y2="22"/><circle cx="12" cy="12" r="7"/></svg>
+                  </span>
+                  <span>Моё местоположение</span>
+                </button>
+                <div class="search">
+                  <label class="field field--search">
+                    <span class="search__icon">
+                      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                    </span>
+                    <input type="search" value="" placeholder="Поиск города…" readonly />
+                  </label>
+                </div>
+              </section>
+              <section class="settings-block">
+                <h3 class="settings-block__title">Расчёт</h3>
+                <div class="field">
+                  <span>Метод расчёта</span>
+                  <div class="menu">
+                    <button type="button" class="menu__trigger" tabindex="-1">
+                      <span class="menu__value">Muslim World League</span>
+                      <span class="menu__chevron">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+                <div class="field">
+                  <span>Аср (мазхаб)</span>
+                  <div class="menu">
+                    <button type="button" class="menu__trigger" tabindex="-1">
+                      <span class="menu__value">Стандарт (шафии)</span>
+                      <span class="menu__chevron">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+              <section class="settings-block">
+                <h3 class="settings-block__title">
+                  <span class="settings-block__icon">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 6.326"/></svg>
+                  </span>
+                  <span>Уведомления</span>
+                </h3>
+                <label class="switch">
+                  <input type="checkbox" checked tabindex="-1" />
+                  <span class="switch__track" aria-hidden="true"></span>
+                  <span class="switch__label">Включить</span>
+                </label>
+                <div class="field">
+                  <span>Напомнить за</span>
+                  <div class="menu">
+                    <button type="button" class="menu__trigger" tabindex="-1">
+                      <span class="menu__value">10 мин</span>
+                      <span class="menu__chevron">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+    <div class="shot-caption">Настройки · тёмная тема</div>
+  </body>
+</html>

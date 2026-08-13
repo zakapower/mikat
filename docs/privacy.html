@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Privacy Policy — Микат</title>
+    <meta
+      name="description"
+      content="Privacy Policy for the Mikat (Микат) browser extension — prayer times, local calculation, no data selling."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600&family=Literata:opsz,wght@7..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #121018;
+        --wash: #221a33;
+        --surface: #1a1624;
+        --ink: #eeeaf6;
+        --muted: #a39bb0;
+        --line: #2e283c;
+        --accent: #a78bfa;
+        --font: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+        --font-display: Literata, Georgia, serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: var(--font);
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--ink);
+        background:
+          radial-gradient(70% 50% at 100% 0%, color-mix(in srgb, var(--wash) 80%, transparent), transparent 60%),
+          var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .wrap {
+        width: min(720px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 2.5rem 0 4rem;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.85rem;
+      }
+
+      .logo {
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 0.7rem;
+        background: #5b21b6;
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+      }
+
+      .logo svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+
+      .brand h1 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        line-height: 1;
+      }
+
+      .brand p {
+        margin: 0.3rem 0 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .langs {
+        display: flex;
+        gap: 0.4rem;
+      }
+
+      .langs a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 2.5rem;
+        height: 2.35rem;
+        padding: 0 0.7rem;
+        border: 1px solid var(--line);
+        border-radius: 0.4rem;
+        background: var(--surface);
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.8rem;
+        text-decoration: none;
+      }
+
+      .langs a.is-active,
+      .langs a:hover {
+        color: var(--ink);
+        border-color: color-mix(in srgb, var(--accent) 40%, var(--line));
+      }
+
+      article {
+        border: 1px solid var(--line);
+        border-radius: 0.85rem;
+        background: var(--surface);
+        padding: 1.5rem 1.35rem 1.75rem;
+      }
+
+      .panel[hidden] {
+        display: none;
+      }
+
+      h2 {
+        margin: 0 0 0.35rem;
+        font-family: var(--font-display);
+        font-size: 1.55rem;
+        letter-spacing: -0.02em;
+      }
+
+      .updated {
+        margin: 0 0 1.4rem;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      h3 {
+        margin: 1.35rem 0 0.45rem;
+        font-size: 1.05rem;
+      }
+
+      p,
+      ul {
+        margin: 0 0 0.85rem;
+        color: color-mix(in srgb, var(--ink) 92%, var(--muted));
+      }
+
+      ul {
+        padding-left: 1.2rem;
+      }
+
+      li + li {
+        margin-top: 0.35rem;
+      }
+
+      footer {
+        margin-top: 1.5rem;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#F5F0FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+              <path d="M20 3v4" />
+              <path d="M22 5h-4" />
+            </svg>
+          </div>
+          <div>
+            <h1>Микат</h1>
+            <p>Privacy Policy</p>
+          </div>
+        </div>
+        <nav class="langs" aria-label="Language">
+          <a href="#ru" id="lang-ru" class="is-active">RU</a>
+          <a href="#en" id="lang-en">EN</a>
+        </nav>
+      </header>
+
+      <article>
+        <section class="panel" id="panel-ru">
+          <h2>Политика конфиденциальности</h2>
+          <p class="updated">Дата обновления: 13 августа 2026</p>
+
+          <p>
+            Расширение браузера <strong>Микат</strong> («расширение») показывает времена намаза,
+            countdown на иконке и опциональные уведомления. Эта страница описывает, какие данные
+            используются и как они обрабатываются.
+          </p>
+
+          <h3>1. Разработчик</h3>
+          <p>
+            Разработчик: <a href="https://github.com/zakapower" rel="noopener noreferrer">zakapower</a>.
+            Репозиторий:
+            <a href="https://github.com/zakapower/mikat" rel="noopener noreferrer">github.com/zakapower/mikat</a>.
+          </p>
+
+          <h3>2. Какие данные используются</h3>
+          <ul>
+            <li>
+              <strong>Местоположение</strong> — координаты (широта/долгота) и текстовая подпись места
+              (например, название города). Нужны только для расчёта времён намаза.
+            </li>
+            <li>
+              <strong>Настройки</strong> — тема, язык, метод расчёта, мазхаб для Аср, включение
+              уведомлений и время напоминания.
+            </li>
+            <li>
+              <strong>Кэш дня</strong> — локально сохранённый список времён на текущий день для
+              быстрого отображения и badge.
+            </li>
+          </ul>
+          <p>
+            Расширение <strong>не собирает</strong> историю браузера, содержимое сайтов, email,
+            аккаунты и платёжные данные.
+          </p>
+
+          <h3>3. Где хранятся данные</h3>
+          <p>
+            Настройки сохраняются в <code>chrome.storage.sync</code> / Edge storage вашего профиля
+            браузера. Кэш дня — в <code>chrome.storage.local</code>. Данные остаются на устройстве /
+            в синхронизации браузера и <strong>не отправляются на наши серверы</strong>
+            (отдельного бэкенда у Микат нет).
+          </p>
+
+          <h3>4. Сетевые запросы</h3>
+          <ul>
+            <li>
+              <strong>OpenStreetMap Nominatim</strong>
+              (<code>https://nominatim.openstreetmap.org</code>) — поиск города и обратная
+              геокодировка по координатам. Запрос содержит текст поиска или координаты.
+            </li>
+            <li>
+              Расчёт времён намаза выполняется <strong>локально</strong> (библиотека adhan) без
+              передачи расписания на сторонние серверы.
+            </li>
+          </ul>
+
+          <h3>5. Разрешения браузера</h3>
+          <ul>
+            <li><code>geolocation</code> — получение координат (с вашего согласия).</li>
+            <li><code>storage</code> — сохранение настроек и кэша.</li>
+            <li><code>alarms</code> — обновление badge и напоминаний.</li>
+            <li><code>notifications</code> — уведомления о намазе (можно выключить).</li>
+          </ul>
+
+          <h3>6. Продажа и передача данных</h3>
+          <p>
+            Мы <strong>не продаём</strong> пользовательские данные, не используем их для рекламы и
+            не передаём третьим лицам, кроме случаев, когда вы сами обращаетесь к Nominatim для
+            поиска города (см. их условия использования OpenStreetMap / Nominatim).
+          </p>
+
+          <h3>7. Удаление данных</h3>
+          <p>
+            Удалите расширение в настройках браузера — связанные данные storage будут удалены
+            согласно политике браузера. Также можно сбросить настройки, очистив данные расширения.
+          </p>
+
+          <h3>8. Дети</h3>
+          <p>
+            Расширение не предназначено для сбора данных детей. Мы сознательно не собираем
+            персональную информацию о пользователях младше 13 лет.
+          </p>
+
+          <h3>9. Изменения</h3>
+          <p>
+            Политика может обновляться. Актуальная версия всегда доступна на этой странице; дата
+            обновления указана выше.
+          </p>
+
+          <h3>10. Контакты</h3>
+          <p>
+            Вопросы по конфиденциальности:
+            <a href="https://github.com/zakapower/mikat/issues" rel="noopener noreferrer"
+              >issues в репозитории Микат</a
+            >
+            или профиль
+            <a href="https://github.com/zakapower" rel="noopener noreferrer">github.com/zakapower</a>.
+          </p>
+        </section>
+
+        <section class="panel" id="panel-en" hidden>
+          <h2>Privacy Policy</h2>
+          <p class="updated">Last updated: August 13, 2026</p>
+
+          <p>
+            The <strong>Mikat</strong> (“Микат”) browser extension shows prayer times, a toolbar
+            countdown badge, and optional notifications. This page explains what data is used and
+            how it is handled.
+          </p>
+
+          <h3>1. Developer</h3>
+          <p>
+            Developer:
+            <a href="https://github.com/zakapower" rel="noopener noreferrer">zakapower</a>.
+            Repository:
+            <a href="https://github.com/zakapower/mikat" rel="noopener noreferrer"
+              >github.com/zakapower/mikat</a
+            >.
+          </p>
+
+          <h3>2. Data we use</h3>
+          <ul>
+            <li>
+              <strong>Location</strong> — coordinates (latitude/longitude) and a place label (e.g.
+              city name), used only to calculate prayer times.
+            </li>
+            <li>
+              <strong>Settings</strong> — theme, language, calculation method, Asr madhab,
+              notification toggle, and reminder offset.
+            </li>
+            <li>
+              <strong>Day cache</strong> — locally stored times for the current day for the popup
+              and badge.
+            </li>
+          </ul>
+          <p>
+            Mikat does <strong>not</strong> collect browsing history, website content, email,
+            account credentials, or payment data.
+          </p>
+
+          <h3>3. Where data is stored</h3>
+          <p>
+            Settings are stored in <code>chrome.storage.sync</code> (or Edge equivalent). The day
+            cache uses <code>chrome.storage.local</code>. Data stays in your browser profile /
+            sync and is <strong>not sent to our servers</strong> (Mikat has no backend).
+          </p>
+
+          <h3>4. Network requests</h3>
+          <ul>
+            <li>
+              <strong>OpenStreetMap Nominatim</strong>
+              (<code>https://nominatim.openstreetmap.org</code>) for city search and optional
+              reverse geocoding. Requests include the search string or coordinates.
+            </li>
+            <li>
+              Prayer times are calculated <strong>locally</strong> with the adhan library and are
+              not uploaded to third-party prayer APIs.
+            </li>
+          </ul>
+
+          <h3>5. Browser permissions</h3>
+          <ul>
+            <li><code>geolocation</code> — obtain coordinates (with your permission).</li>
+            <li><code>storage</code> — save settings and cache.</li>
+            <li><code>alarms</code> — update the badge and reminders.</li>
+            <li><code>notifications</code> — prayer notifications (can be disabled).</li>
+          </ul>
+
+          <h3>6. Sale and sharing</h3>
+          <p>
+            We do <strong>not sell</strong> user data, do not use it for advertising, and do not
+            share it with third parties except when you use Nominatim for city search (subject to
+            OpenStreetMap / Nominatim terms).
+          </p>
+
+          <h3>7. Deletion</h3>
+          <p>
+            Remove the extension in browser settings to delete related storage according to the
+            browser’s policy, or clear the extension’s site/storage data manually.
+          </p>
+
+          <h3>8. Children</h3>
+          <p>
+            Mikat is not intended to collect children’s data. We do not knowingly collect personal
+            information from users under 13.
+          </p>
+
+          <h3>9. Changes</h3>
+          <p>
+            This policy may be updated. The current version is always available on this page; the
+            update date is shown above.
+          </p>
+
+          <h3>10. Contact</h3>
+          <p>
+            Privacy questions:
+            <a href="https://github.com/zakapower/mikat/issues" rel="noopener noreferrer"
+              >Mikat GitHub issues</a
+            >
+            or
+            <a href="https://github.com/zakapower" rel="noopener noreferrer">github.com/zakapower</a>.
+          </p>
+        </section>
+      </article>
+
+      <footer>
+        © Mikat ·
+        <a href="https://github.com/zakapower/mikat" rel="noopener noreferrer">Source on GitHub</a>
+      </footer>
+    </div>
+
+    <script>
+      const ru = document.getElementById('panel-ru')
+      const en = document.getElementById('panel-en')
+      const btnRu = document.getElementById('lang-ru')
+      const btnEn = document.getElementById('lang-en')
+
+      function setLang(lang) {
+        const isEn = lang === 'en'
+        ru.hidden = isEn
+        en.hidden = !isEn
+        btnRu.classList.toggle('is-active', !isEn)
+        btnEn.classList.toggle('is-active', isEn)
+        document.documentElement.lang = isEn ? 'en' : 'ru'
+      }
+
+      btnRu.addEventListener('click', (e) => {
+        e.preventDefault()
+        setLang('ru')
+        history.replaceState(null, '', '#ru')
+      })
+      btnEn.addEventListener('click', (e) => {
+        e.preventDefault()
+        setLang('en')
+        history.replaceState(null, '', '#en')
+      })
+
+      setLang(location.hash === '#en' ? 'en' : 'ru')
+    </script>
+  </body>
+</html>
