@@ -96,10 +96,23 @@ let lastDay = null
 let lastNextId = null
 let locating = false
 let uiReady = false
+let enteringView = null
 
 function setStatus(text, isError = false) {
   els.status.textContent = text || ''
   els.status.classList.toggle('is-error', Boolean(isError && text))
+}
+
+function clearEntering(view) {
+  if (!view) return
+  view.classList.remove('is-entering')
+  view.removeEventListener('animationend', onEnteringEnd)
+  if (enteringView === view) enteringView = null
+}
+
+function onEnteringEnd(e) {
+  if (e.target !== enteringView || e.animationName !== 'in') return
+  clearEntering(enteringView)
 }
 
 function setView(view, { animate = uiReady } = {}) {
@@ -108,15 +121,20 @@ function setView(view, { animate = uiReady } = {}) {
   const hide = isSettings ? els.viewMain : els.viewSettings
 
   els.app.dataset.view = isSettings ? 'settings' : 'main'
-  hide.hidden = true
-  hide.classList.remove('is-entering')
+  if (!show.hidden && hide.hidden) return
 
-  show.classList.remove('is-entering')
+  hide.hidden = true
+  clearEntering(hide)
+
   show.hidden = false
-  if (animate) {
-    void show.offsetWidth
-    show.classList.add('is-entering')
-  }
+  clearEntering(show)
+  if (!animate) return
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+  void show.offsetWidth
+  show.classList.add('is-entering')
+  enteringView = show
+  show.addEventListener('animationend', onEnteringEnd)
 }
 
 function setGeoLoading(loading) {
@@ -317,22 +335,38 @@ function mountMenus() {
   })
 }
 
+function prayerRowHtml(item, nextId, L) {
+  return `
+      <li class="${item.id === nextId ? 'is-next' : ''}">
+        <strong>${prayerLabel(L, item.id)}</strong>
+        <span>${formatClock(item.ms)}</span>
+      </li>`
+}
+
+function patchPrayerRow(li, item, nextId, L) {
+  li.classList.toggle('is-next', item.id === nextId)
+  const nameEl = li.children[0]
+  const timeEl = li.children[1]
+  if (nameEl) nameEl.textContent = prayerLabel(L, item.id)
+  if (timeEl) timeEl.textContent = formatClock(item.ms)
+}
+
 function renderList(day, nextId) {
   lastDay = day
   lastNextId = nextId
   const L = lang()
   els.locatingSkelNext.hidden = true
   els.locatingSkelList.hidden = true
-  els.prayerList.innerHTML = day.list
-    .map(
-      (item) => `
-      <li class="${item.id === nextId ? 'is-next' : ''}">
-        <strong>${prayerLabel(L, item.id)}</strong>
-        <span>${formatClock(item.ms)}</span>
-      </li>`,
-    )
-    .join('')
-  els.prayerList.hidden = false
+  const items = day.list
+  const ul = els.prayerList
+  if (ul.children.length === items.length) {
+    for (let i = 0; i < items.length; i++) {
+      patchPrayerRow(ul.children[i], items[i], nextId, L)
+    }
+  } else {
+    ul.innerHTML = items.map((item) => prayerRowHtml(item, nextId, L)).join('')
+  }
+  ul.hidden = false
 }
 
 function renderNext(next) {
