@@ -158,9 +158,6 @@ body {
   flex-shrink: 0;
   line-height: 1;
   transition:
-    color 0.22s ease,
-    border-color 0.22s ease,
-    background-color 0.22s ease,
     transform 0.22s ease,
     box-shadow 0.22s ease;
 }
@@ -316,11 +313,18 @@ a.icon-btn {
   animation: skel-shimmer 1.55s ease-in-out infinite;
 }
 
-.next--skel .skel__icon-slot {
-  display: inline-block;
+.skel__bone--icon {
   width: 0.9rem;
   height: 0.9rem;
   flex-shrink: 0;
+}
+
+.next--skel .next__countdown {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .skel__bone--label {
@@ -618,10 +622,7 @@ a.icon-btn {
   font-size: 0.88rem;
   text-align: left;
   cursor: pointer;
-  transition:
-    border-color 0.18s ease,
-    background-color 0.18s ease,
-    color 0.18s ease;
+  transition: transform 0.18s ease;
 }
 
 .menu__value {
@@ -635,7 +636,7 @@ a.icon-btn {
   display: inline-flex;
   color: var(--muted);
   flex-shrink: 0;
-  transition: transform 0.22s ease, color 0.22s ease;
+  transition: transform 0.22s ease;
 }
 
 .menu__chevron .icon {
@@ -702,11 +703,7 @@ a.icon-btn {
   font-weight: 600;
   text-align: left;
   cursor: pointer;
-  transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease,
-    color 0.18s ease,
-    transform 0.18s ease;
+  transition: transform 0.18s ease;
 }
 
 .menu__option.is-selected {
@@ -785,9 +782,6 @@ a.icon-btn {
   border-radius: 999px;
   background: color-mix(in srgb, var(--muted) 28%, var(--surface));
   border: 1px solid var(--line);
-  transition:
-    background-color 0.18s ease,
-    border-color 0.18s ease;
 }
 
 .switch__track::after {
@@ -868,9 +862,6 @@ a.icon-btn {
   padding: 0.5rem 0.55rem;
   border-radius: 0.45rem;
   cursor: pointer;
-  transition:
-    color 0.15s ease,
-    background-color 0.15s ease;
 }
 
 .status {
