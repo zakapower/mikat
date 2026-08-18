@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Mikat",
   "description": "Времена намаза, таймер на иконке и уведомления",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "action": {
     "default_title": "Mikat",
     "default_popup": "popup/popup.html",
